@@ -20,14 +20,44 @@ steps to make endpoint request below
 
 #### Post Request endpoint sample
 
-Endspoint = POST http://localhost:8082/department
+Endspoint = POST http://localhost:8080/department
+
+{
+"departmentName":"EG",
+"departmentAddress":"Wuse 2",
+"departmentCode":"EG-01"
+}
+
+#### Get All Request endpoint sample
+
+Endspoint = GET http://localhost:8080/department
+
+#### Get each department Request endpoint sample
+
+Endspoint = GET http://localhost:8080/department/id
+
+NB: For each you will provide department id as a path 
+variable in the url i.e replace id with department id in url
+
+#### Delete Request endpoint sample
+
+Endspoint = DELETE http://localhost:8080/department/id
+
+NB: You are to provide department id in place of id in url 
+while making delete request
+
+#### Put Request endpoint sample
+
+Endpoint = PUT http://localhost:8080/department/id
 
 {
 "departmentName":"HR",
-"departmentAddress":"Garki",
-"departmentCode":"HR-GK-01"
+"departmentAddress":"Garki 2"
+"departmentCode": "HR-01"
 }
 
+NB: You are to provide department id in place of id in url
+while making put request
 
 PS: Your application will run on port 8080 by default, 
 you can change that in the application.properties file.
