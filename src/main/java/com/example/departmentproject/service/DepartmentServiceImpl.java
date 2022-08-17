@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class DepartmentServiceImpl implements  DepartmentService{
+public class DepartmentServiceImpl implements DepartmentService{
 
     @Autowired
     private DepartmentRepository departmentRepository;
@@ -59,5 +59,9 @@ public class DepartmentServiceImpl implements  DepartmentService{
         return departmentRepository.save(departmentDB);
     }
 
+    @Override
+    public Department getDepartmentByName(String departmentName) {
+        return departmentRepository.findByDepartmentName(departmentName);
+    }
 
 }
