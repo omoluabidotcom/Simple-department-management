@@ -12,6 +12,7 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long departmentId;
+
     @NotBlank(message = "departmentName most be provided")
     private String departmentName;
     private  String departmentAddress;
