@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService{
@@ -25,8 +26,14 @@ public class DepartmentServiceImpl implements DepartmentService{
     }
 
     @Override
-    public Department getOneDepartment(Long id) {
-        return departmentRepository.findById(id).get();
+    public Department getOneDepartment(Long id) throws Exception {
+
+        Optional<Department> department = departmentRepository.findById(id);
+        if(!department.isPresent()) {
+
+            throw new Exception("Department with ID " + id + " doesn't exists");
+        }
+        return department.get();
     }
 
     @Override

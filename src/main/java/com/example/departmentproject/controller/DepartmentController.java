@@ -31,7 +31,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/{Id}")
-    public Department getEachDepartment(@PathVariable("Id") Long id) {
+    public Department getEachDepartment(@PathVariable("Id") Long id) throws Exception {
         LOGGER.warn("Inside getEachDepartment in DepartmentController");
         return departmentService.getOneDepartment(id);
     }
