@@ -1,6 +1,7 @@
 package com.example.departmentproject.controller;
 
 import com.example.departmentproject.entity.Department;
+import com.example.departmentproject.error.DepartmentNotFoundException;
 import com.example.departmentproject.service.DepartmentService;
 import com.sun.org.slf4j.internal.Logger;
 import com.sun.org.slf4j.internal.LoggerFactory;
@@ -31,7 +32,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/{Id}")
-    public Department getEachDepartment(@PathVariable("Id") Long id) throws Exception {
+    public Department getEachDepartment(@PathVariable("Id") Long id) throws DepartmentNotFoundException {
         LOGGER.warn("Inside getEachDepartment in DepartmentController");
         return departmentService.getOneDepartment(id);
     }
