@@ -1,6 +1,7 @@
 package com.example.departmentproject.service;
 
 import com.example.departmentproject.entity.Department;
+import com.example.departmentproject.error.DepartmentNameNotFound;
 import com.example.departmentproject.error.DepartmentNotFoundException;
 
 import java.util.List;
@@ -17,6 +18,6 @@ public interface DepartmentService {
 
     public Department updateDepartment(Long id, Department department);
 
-    public Department getDepartmentByNameIgnoreCase(String departmentName);
+    public Department getDepartmentByNameIgnoreCase(String departmentName) throws DepartmentNameNotFound;
 
 }

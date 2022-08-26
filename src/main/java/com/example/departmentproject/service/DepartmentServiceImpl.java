@@ -1,6 +1,7 @@
 package com.example.departmentproject.service;
 
 import com.example.departmentproject.entity.Department;
+import com.example.departmentproject.error.DepartmentNameNotFound;
 import com.example.departmentproject.error.DepartmentNotFoundException;
 import com.example.departmentproject.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,9 +69,18 @@ public class DepartmentServiceImpl implements DepartmentService{
     }
 
     @Override
-    public Department getDepartmentByNameIgnoreCase(String departmentName) {
+    public Department getDepartmentByNameIgnoreCase(String departmentName) throws DepartmentNameNotFound {
 
-        return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
+        //return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
+
+        Optional<Department> department = Optional.ofNullable(departmentRepository.findByDepartmentNameIgnoreCase(departmentName));
+
+        if(!department.isPresent()) {
+
+            throw new DepartmentNameNotFound("Department with the name "+ departmentName+" doesn't exist");
+        }
+
+        return department.get();
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.departmentproject.controller;
 
 import com.example.departmentproject.entity.Department;
+import com.example.departmentproject.error.DepartmentNameNotFound;
 import com.example.departmentproject.error.DepartmentNotFoundException;
 import com.example.departmentproject.service.DepartmentService;
 import com.sun.org.slf4j.internal.Logger;
@@ -51,7 +52,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/name/{name}")
-    public Department getDepartmenyByName(@PathVariable("name") String departmentName) {
+    public Department getDepartmenyByName(@PathVariable("name") String departmentName) throws DepartmentNameNotFound {
         LOGGER.warn("Inside getDepartmenyByName in DepartmentController");
         return departmentService.getDepartmentByNameIgnoreCase(departmentName);
     }

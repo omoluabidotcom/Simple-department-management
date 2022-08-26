@@ -1,6 +1,7 @@
 package com.example.departmentproject.service;
 
 import com.example.departmentproject.entity.Department;
+import com.example.departmentproject.error.DepartmentNameNotFound;
 import com.example.departmentproject.repository.DepartmentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +10,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,11 +41,12 @@ class DepartmentServiceTest {
 
     @Test
     //@DisplayName("When name is valid")
-    public void whenDepartmentNameValid_DepartmentShouldFound() {
+    public void whenDepartmentNameValid_DepartmentShouldFound() throws DepartmentNameNotFound {
 
         String departmentName = "HR";
         Department found = departmentService.getDepartmentByNameIgnoreCase(departmentName);
 
         assertEquals(departmentName, found.getDepartmentName());
     }
+
 }
