@@ -53,6 +53,6 @@ public class DepartmentController {
     @GetMapping("/department/name/{name}")
     public Department getDepartmenyByName(@PathVariable("name") String departmentName) {
         LOGGER.warn("Inside getDepartmenyByName in DepartmentController");
-        return departmentService.getDepartmentByName(departmentName);
+        return departmentService.getDepartmentByNameIgnoreCase(departmentName);
     }
 }

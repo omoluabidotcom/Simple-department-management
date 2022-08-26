@@ -31,7 +31,7 @@ class DepartmentServiceTest {
                 .departmentId(1L)
                 .build();
 
-        Mockito.when(departmentRepository.findByDepartmentName("HR"))
+        Mockito.when(departmentRepository.findByDepartmentNameIgnoreCase("HR"))
                 .thenReturn(department);
 
     }
@@ -41,7 +41,7 @@ class DepartmentServiceTest {
     public void whenDepartmentNameValid_DepartmentShouldFound() {
 
         String departmentName = "HR";
-        Department found = departmentService.getDepartmentByName(departmentName);
+        Department found = departmentService.getDepartmentByNameIgnoreCase(departmentName);
 
         assertEquals(departmentName, found.getDepartmentName());
     }
