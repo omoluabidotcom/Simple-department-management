@@ -1,6 +1,7 @@
 package com.example.departmentproject.controller;
 
 import com.example.departmentproject.entity.Department;
+import com.example.departmentproject.error.DepartmentNotFoundException;
 import com.example.departmentproject.service.DepartmentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -60,6 +61,15 @@ class DepartmentControllerTest {
     }
 
     @Test
-    void getEachDepartment() {
+    void getEachDepartment() throws Exception {
+
+        Mockito.when(departmentService.getOneDepartment(1L))
+                .thenReturn(department);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/department/1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.departmentName")
+                        .value(department.getDepartmentName()));
     }
 }
