@@ -17,10 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DepartmentServiceTest {
 
     @Autowired
-    DepartmentService departmentService;
+    private DepartmentService departmentService;
 
     @MockBean
-    DepartmentRepository departmentRepository;
+    private DepartmentRepository departmentRepository;
 
     @BeforeEach
     void setUp() {
@@ -35,6 +35,9 @@ class DepartmentServiceTest {
         Mockito.when(departmentRepository.findByDepartmentNameIgnoreCase("HR"))
                 .thenReturn(department);
 
+//        Mockito.when(departmentRepository.findById(1L))
+//                .thenReturn(Optional.ofNullable(department));
+
     }
 
     @Test
@@ -46,5 +49,20 @@ class DepartmentServiceTest {
 
         assertEquals(departmentName, found.getDepartmentName());
     }
+
+//    @Test
+//    public void whenDepartmentUpdate_DepartmentShouldFound() {
+//
+//        Department inputDepartment = Department.builder()
+//                .departmentAddress("Garki")
+//                .departmentName("HR")
+//                .departmentCode("HR-05")
+//                .departmentId(1L)
+//                .build();
+//
+//        Department found = departmentService.updateDepartment(1L, inputDepartment);
+//
+//        assertEquals(found.getDepartmentName(), "HR");
+//    }
 
 }
