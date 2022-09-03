@@ -1,6 +1,11 @@
 spring:
   profiles:
     active: prod
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 ---
 
@@ -17,6 +22,7 @@ spring:
   config:
     activate:
       on-profile: dev
+
 ---
 
 spring:
